@@ -247,16 +247,58 @@
                     </div>
 
                     <form class="contact-form scroll-reveal">
-                        <div class="form-group">
-                            <input type="text" placeholder="Name" required>
+                        <div class="pcb-form-container">
+                            <div class="form-field">
+                                <label class="field-label">
+                                    <span class="label-text">NAME</span>
+                                    <span class="pin-indicator">›P1</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <span class="input-trace"></span>
+                                    <input type="text" placeholder="Enter your name" required>
+                                    <div class="input-led"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="field-label">
+                                    <span class="label-text">EMAIL</span>
+                                    <span class="pin-indicator">›P2</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <span class="input-trace"></span>
+                                    <input type="email" placeholder="your.email@example.com" required>
+                                    <div class="input-led"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="field-label">
+                                    <span class="label-text">MESSAGE</span>
+                                    <span class="pin-indicator">›P3</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <span class="input-trace"></span>
+                                    <textarea placeholder="Tell us about your project..." rows="5" required></textarea>
+                                    <div class="input-led"></div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="pcb-submit-button">
+                                <span class="button-trace-left"></span>
+                                <span class="button-trace-right"></span>
+                                <span class="button-chip">
+                                    <span class="chip-pins chip-pins-left"></span>
+                                    <span class="chip-content">TRANSMIT</span>
+                                    <span class="chip-pins chip-pins-right"></span>
+                                </span>
+                                <div class="button-led-indicators">
+                                    <div class="button-led"></div>
+                                    <div class="button-led"></div>
+                                    <div class="button-led"></div>
+                                </div>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Send Message</button>
                     </form>
                 </div>
             </div>
