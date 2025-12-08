@@ -6,20 +6,19 @@
 }
 
 :root {
-    --primary-bg: #0a0e14;
-    --secondary-bg: #141b24;
-    --text-primary: #e6e6e6;
-    --text-secondary: #9ca3af;
-    --accent-color: #3b82f6;
-    --accent-hover: #60a5fa;
-    --border-color: #1f2937;
-    --card-bg: rgba(20, 27, 36, 0.8);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --pcb-green: #1a4d2e;
-    --pcb-trace: #00d9ff;
-    --glow-primary: rgba(59, 130, 246, 0.5);
+    --primary-bg: #ffffff;
+    --secondary-bg: #f5f5f7;
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --accent-color: #0071e3;
+    --accent-hover: #0077ed;
+    --border-color: #d2d2d7;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --pcb-trace: #0066cc;
+    --glow-primary: rgba(0, 113, 227, 0.3);
 }
 
 html {
@@ -46,14 +45,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(10, 14, 20, 0.8);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(30px) saturate(200%);
     -webkit-backdrop-filter: blur(30px) saturate(200%);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(59, 130, 246, 0.1),
-        0 4px 20px rgba(0, 0, 0, 0.3);
+        0 1px 3px rgba(0, 0, 0, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2);
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -102,7 +101,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #0a0e14 0%, #141b24 50%, #0f1419 100%);
+    background: linear-gradient(135deg, #e8f0ec 0%, #f5f5f7 50%, #d4e6dc 100%);
 }
 
 .hero-gradient {
@@ -111,7 +110,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 113, 227, 0.08) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
 }
@@ -136,12 +135,12 @@ body {
 /* Background PCB Traces */
 .bg-trace {
     fill: none;
-    stroke: #00d9ff;
+    stroke: #0066cc;
     stroke-width: 3;
     stroke-linecap: square;
     stroke-linejoin: miter;
-    opacity: 0.35;
-    filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.5));
+    opacity: 0.25;
+    filter: drop-shadow(0 0 2px rgba(0, 102, 204, 0.3));
     animation: tracePulse 4s ease-in-out infinite;
 }
 
@@ -549,97 +548,8 @@ section {
     position: relative;
 }
 
-/* PCB Decorations in sections */
-.pcb-decoration {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 200px;
-    opacity: 0.2;
-    pointer-events: none;
-    z-index: 2;
-}
 
-.pcb-decoration-left {
-    left: 0;
-}
 
-.pcb-decoration-right {
-    right: 0;
-}
-
-.pcb-decoration svg {
-    width: 100%;
-    height: 100%;
-}
-
-.trace-decoration {
-    fill: none;
-    stroke: #00d9ff;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    animation: drawTraceDecoration 2s ease-out forwards, tracePulseDecoration 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.6));
-}
-
-.scroll-reveal.active ~ .pcb-decoration .trace-decoration,
-section:hover .trace-decoration {
-    stroke-dashoffset: 0;
-}
-
-@keyframes drawTraceDecoration {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes tracePulseDecoration {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-.via-decoration {
-    fill: #00d9ff;
-    opacity: 0;
-    animation: fadeInViaDecoration 0.6s ease-out forwards, viaPulse 2s ease-in-out infinite;
-    animation-delay: 1s, 2s;
-}
-
-@keyframes fadeInViaDecoration {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-}
-
-@keyframes viaPulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.9)); }
-}
-
-.smd-decoration {
-    fill: #00d9ff;
-    opacity: 0;
-    animation: fadeInPad 0.8s ease-out forwards;
-    animation-delay: 1.2s;
-}
-
-@keyframes fadeInPad {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 0.7;
-        transform: translateY(0);
-    }
-}
 
 .section-title {
     font-size: clamp(40px, 5vw, 64px);
@@ -652,24 +562,8 @@ section:hover .trace-decoration {
 
 /* Projects Section */
 .projects {
-    background: linear-gradient(180deg, #0f1419 0%, #141b24 100%);
+    background: var(--secondary-bg);
     position: relative;
-    overflow: hidden;
-}
-
-.projects::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .projects-grid {
@@ -687,15 +581,14 @@ section:hover .trace-decoration {
     border-radius: 20px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(0, 102, 204, 0.1);
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(59, 130, 246, 0.3);
-    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: var(--shadow-lg);
 }
 
 .project-image {
@@ -741,38 +634,18 @@ section:hover .trace-decoration {
 
 .tag {
     padding: 6px 14px;
-    background-color: rgba(59, 130, 246, 0.15);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background-color: var(--secondary-bg);
     border-radius: 16px;
     font-size: 13px;
-    color: #60a5fa;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 /* About Section */
 .about {
-    background: linear-gradient(135deg, #0a0e14 0%, #0f1419 100%);
+    background: var(--primary-bg);
     position: relative;
     overflow: hidden;
-}
-
-.about::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(59, 130, 246, 0.05) 35px, rgba(59, 130, 246, 0.05) 70px);
-    pointer-events: none;
-    z-index: 0;
-    animation: aboutPatternShift 60s linear infinite;
-}
-
-@keyframes aboutPatternShift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(70px, 70px); }
 }
 
 .about-content {
@@ -835,7 +708,7 @@ section:hover .trace-decoration {
 
 /* Skills Section */
 .skills {
-    background: linear-gradient(180deg, #141b24 0%, #0a0e14 100%);
+    background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
     position: relative;
     overflow: hidden;
 }
@@ -848,8 +721,8 @@ section:hover .trace-decoration {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 25% 25%, rgba(0, 217, 255, 0.08) 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, rgba(0, 217, 255, 0.08) 2px, transparent 2px);
+        radial-gradient(circle at 25% 25%, rgba(0, 102, 204, 0.04) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(0, 102, 204, 0.04) 2px, transparent 2px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -869,9 +742,9 @@ section:hover .trace-decoration {
     -webkit-backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(0, 102, 204, 0.1);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
     overflow: hidden;
 }
@@ -883,16 +756,14 @@ section:hover .trace-decoration {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #00d9ff, #3b82f6);
+    background: linear-gradient(90deg, #0066cc, #3399ff);
     opacity: 0;
     transition: opacity 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .skill-category:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md), 0 0 25px rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: var(--shadow-md);
 }
 
 .skill-category:hover::before {
@@ -914,7 +785,7 @@ section:hover .trace-decoration {
     padding: 10px 0;
     color: var(--text-secondary);
     font-size: 16px;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: color 0.2s ease;
 }
 
@@ -928,7 +799,7 @@ section:hover .trace-decoration {
 
 /* Contact Section */
 .contact {
-    background: linear-gradient(135deg, #0f1419 0%, #0a0e14 100%);
+    background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
     position: relative;
     overflow: hidden;
 }
@@ -941,8 +812,8 @@ section:hover .trace-decoration {
     right: 0;
     bottom: 0;
     background-image:
-        linear-gradient(30deg, transparent 48%, rgba(0, 217, 255, 0.05) 49%, rgba(0, 217, 255, 0.05) 51%, transparent 52%),
-        linear-gradient(-30deg, transparent 48%, rgba(0, 217, 255, 0.05) 49%, rgba(0, 217, 255, 0.05) 51%, transparent 52%);
+        linear-gradient(30deg, transparent 48%, rgba(0, 102, 204, 0.02) 49%, rgba(0, 102, 204, 0.02) 51%, transparent 52%),
+        linear-gradient(-30deg, transparent 48%, rgba(0, 102, 204, 0.02) 49%, rgba(0, 102, 204, 0.02) 51%, transparent 52%);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
@@ -996,40 +867,19 @@ section:hover .trace-decoration {
 }
 
 .pcb-form-container {
-    background: linear-gradient(135deg, rgba(20, 27, 36, 0.95) 0%, rgba(15, 20, 25, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 245, 0.9) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
-    border: 2px solid rgba(0, 217, 255, 0.3);
+    border: 2px solid rgba(0, 102, 204, 0.2);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(59, 130, 246, 0.2),
-        0 0 40px rgba(0, 217, 255, 0.1);
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
     overflow: hidden;
 }
 
-.pcb-form-container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image:
-        linear-gradient(90deg, rgba(0, 217, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(rgba(0, 217, 255, 0.08) 1px, transparent 1px);
-    background-size: 30px 30px;
-    pointer-events: none;
-    z-index: 0;
-    animation: pcbGridShift 20s linear infinite;
-}
-
-@keyframes pcbGridShift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(30px, 30px); }
-}
 
 .form-field {
     position: relative;
@@ -1054,10 +904,9 @@ section:hover .trace-decoration {
 
 .pin-indicator {
     font-size: 11px;
-    color: #00d9ff;
-    opacity: 0.9;
+    color: #0066cc;
+    opacity: 0.7;
     font-weight: normal;
-    text-shadow: 0 0 5px rgba(0, 217, 255, 0.3);
 }
 
 .input-wrapper {
@@ -1070,7 +919,7 @@ section:hover .trace-decoration {
     top: 50%;
     width: 3px;
     height: 0;
-    background: linear-gradient(180deg, transparent, #00d9ff, transparent);
+    background: linear-gradient(180deg, transparent, #0066cc, transparent);
     border-radius: 2px;
     transition: height 0.3s ease;
     z-index: 1;
@@ -1084,11 +933,11 @@ section:hover .trace-decoration {
 @keyframes tracePulseVertical {
     0%, 100% {
         opacity: 0.5;
-        filter: drop-shadow(0 0 2px rgba(0, 217, 255, 0.4));
+        filter: drop-shadow(0 0 2px rgba(0, 102, 204, 0.4));
     }
     50% {
         opacity: 1;
-        filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.8));
+        filter: drop-shadow(0 0 6px rgba(0, 102, 204, 0.8));
     }
 }
 
@@ -1096,11 +945,11 @@ section:hover .trace-decoration {
 .form-field textarea {
     width: 100%;
     padding: 16px 20px 16px 24px;
-    border: 2px solid rgba(59, 130, 246, 0.3);
+    border: 2px solid rgba(0, 102, 204, 0.2);
     border-radius: 8px;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-    background: rgba(10, 14, 20, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     color: var(--text-primary);
     transition: all 0.3s ease;
     position: relative;
@@ -1109,11 +958,11 @@ section:hover .trace-decoration {
 .form-field input:focus,
 .form-field textarea:focus {
     outline: none;
-    border-color: #00d9ff;
-    background: rgba(10, 14, 20, 0.8);
+    border-color: #0066cc;
+    background: rgba(255, 255, 255, 0.95);
     box-shadow:
-        0 0 0 4px rgba(0, 217, 255, 0.15),
-        0 4px 12px rgba(0, 217, 255, 0.3);
+        0 0 0 4px rgba(0, 102, 204, 0.1),
+        0 4px 12px rgba(0, 102, 204, 0.15);
     transform: translateX(4px);
 }
 
@@ -1233,11 +1082,11 @@ section:hover .trace-decoration {
     top: 50%;
     width: 60px;
     height: 3px;
-    background: #00d9ff;
+    background: #0066cc;
     transform: translateY(-50%);
     opacity: 0;
     transition: all 0.4s ease;
-    filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.8));
+    filter: drop-shadow(0 0 4px rgba(0, 102, 204, 0.6));
 }
 
 .button-trace-left {
@@ -1330,7 +1179,7 @@ section:hover .trace-decoration {
     background-color: var(--primary-bg);
     padding: 40px 0;
     text-align: center;
-    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .footer p {
