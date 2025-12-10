@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Matthew Mejia | Link Layer Labs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .resume-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .resume-contact a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .resume-contact a:hover {
+            color: var(--accent-hover);
+        }
+
+        .resume-contact span {
+            color: var(--text-secondary);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 32px 0 60px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 113, 227, 0.4);
+        }
+
+        .resume-section {
+            margin-bottom: 48px;
+        }
+
+        .resume-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent-color);
+            letter-spacing: -0.01em;
+        }
+
+        .resume-summary {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .skill-group h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
+        .skill-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-group li {
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .experience-item {
+            margin-bottom: 40px;
+        }
+
+        .experience-header {
+            margin-bottom: 16px;
+        }
+
+        .experience-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .experience-company {
+            font-size: 16px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .experience-duties {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .experience-duties li {
+            padding: 8px 0 8px 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .experience-duties li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .education-item {
+            background: var(--secondary-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .education-degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .education-school {
+            font-size: 16px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .education-year {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .additional-info {
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05), rgba(0, 113, 227, 0.02));
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 113, 227, 0.1);
+        }
+
+        .additional-info p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 100px 24px 60px;
+            }
+
+            .resume-header h1 {
+                font-size: 36px;
+            }
+
+            .resume-contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Link Layer Labs</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="resume-header">
+            <h1>Matthew Mejia</h1>
+            <div class="resume-contact">
+                <span>Phoenix, AZ</span>
+                <span>|</span>
+                <a href="mailto:mejiamj0@gmail.com">mejiamj0@gmail.com</a>
+                <span>|</span>
+                <a href="https://linkedin.com/in/matthewmejia" target="_blank">LinkedIn</a>
+            </div>
+            <a href="resume.pdf" download class="download-btn">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <!-- Summary -->
+        <div class="resume-section">
+            <h2>Summary</h2>
+            <p class="resume-summary">
+                Electrical Engineer with hands-on experience designing and testing embedded electronics, including
+                multiple production PCBs involving power regulation, digital interfaces, microcontroller-based systems,
+                and mixed-signal circuits. Skilled in hardware bring-up, structured debugging using oscilloscopes, and
+                documenting root-cause findings to improve board reliability. Proficient in Fusion 360 for CAD modeling
+                and mechanical integration. Strong understanding of programming logic in C/C++ and Python, with
+                ongoing improvement toward fluency for embedded applications.
+            </p>
+        </div>
+
+        <!-- Core Technical Skills -->
+        <div class="resume-section">
+            <h2>Core Technical Skills</h2>
+            <div class="skills-list">
+                <div class="skill-group">
+                    <h3>Electronics Design</h3>
+                    <ul>
+                        <li>PCB Schematic Design</li>
+                        <li>PCB Layout</li>
+                        <li>Mixed-Signal Circuits</li>
+                        <li>Buck Regulators & Rectifiers</li>
+                        <li>Microcontroller-Based Systems</li>
+                        <li>SPI, UART Interfaces</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Bench Testing</h3>
+                    <ul>
+                        <li>Oscilloscopes</li>
+                        <li>Signal Generators</li>
+                        <li>Multimeters</li>
+                        <li>SMD Soldering & Rework</li>
+                        <li>Hardware Bring-Up</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Programming</h3>
+                    <ul>
+                        <li>C/C++ (fundamentals)</li>
+                        <li>Python (fundamentals)</li>
+                        <li>Strong programming logic</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>KiCad</li>
+                        <li>Fusion 360 (CAD)</li>
+                        <li>Basic 3D CAD</li>
+                        <li>Rapid Prototyping</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Other</h3>
+                    <ul>
+                        <li>Root-Cause Analysis</li>
+                        <li>Documentation</li>
+                        <li>Manufacturing Support</li>
+                        <li>Troubleshooting</li>
+                        <li>Basic RF Concepts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="resume-section">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Support Engineer</div>
+                    <div class="experience-company">Aether RF, LLC</div>
+                    <div class="experience-date">March 2024 – Present</div>
+                </div>
+                <ul class="experience-duties">
+                    <li>Designed and tested multiple PCB assemblies used as host platforms for proprietary RF communication modules.</li>
+                    <li>Created schematics and multi-layer PCB layouts including switching power supplies, embedded microcontroller systems, digital interfaces, and mixed-signal domains.</li>
+                    <li>Performed hardware bring-up and structured debugging using oscilloscopes and targeted test procedures.</li>
+                    <li>Conducted root-cause analysis on electrical and integration issues, documenting findings to improve design reliability and guide next-revision improvements.</li>
+                    <li>Built and tested prototypes using hands-on SMD soldering techniques.</li>
+                    <li>Designed enclosure and mounting components using Fusion 360 to support mechanical integration.</li>
+                    <li>Collaborated with engineers to refine power architecture, improve board robustness, and support manufacturing and field deployment.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Engineering Shop Technician</div>
+                    <div class="experience-company">Grand Canyon University</div>
+                    <div class="experience-date">February 2023 – March 2024</div>
+                </div>
+                <ul class="experience-duties">
+                    <li>Maintained and repaired CNC machines, welding tools, electronics equipment, and other lab systems.</li>
+                    <li>Trained more than 1000 students on proper equipment operation, improving lab efficiency and safety.</li>
+                    <li>Reduced downtime through structured troubleshooting and preventive maintenance routines.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Resident Assistant</div>
+                    <div class="experience-company">Grand Canyon University</div>
+                    <div class="experience-date">August 2022 – May 2023</div>
+                </div>
+                <ul class="experience-duties">
+                    <li>Oversaw a residential community of 500+ students while managing safety, communication, and conflict resolution.</li>
+                    <li>Balanced building operations responsibilities alongside engineering coursework.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Technical Support Specialist</div>
+                    <div class="experience-company">Grand Canyon Education</div>
+                    <div class="experience-date">January 2022 – May 2022</div>
+                </div>
+                <ul class="experience-duties">
+                    <li>Resolved software and platform issues for instructors and students and improved troubleshooting workflows.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Electronic Repair Technician</div>
+                    <div class="experience-company">CPR Cell Phone Repair</div>
+                    <div class="experience-date">August 2020 – August 2021</div>
+                </div>
+                <ul class="experience-duties">
+                    <li>Performed diagnostics, microsoldering, and board-level repairs on consumer electronics.</li>
+                    <li>Completed 10–15 repairs daily and independently maintained store operations during staffing shortages.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="education-degree">Bachelor of Science in Electrical Engineering</div>
+                <div class="education-school">Grand Canyon University</div>
+                <div class="education-year">2024</div>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="resume-section">
+            <h2>Additional Information</h2>
+            <div class="additional-info">
+                <p>
+                    U.S. Citizen · Fusion 360 CAD Proficiency · Experience designing mixed-signal and
+                    microcontroller-based PCBs · Interest in aerospace hardware development and continued growth in RF
+                    engineering and advanced test methods
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Link Layer Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

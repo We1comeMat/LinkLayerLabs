@@ -238,7 +238,18 @@ const animateStats = () => {
     const stats = document.querySelectorAll('.stat h3');
 
     stats.forEach(stat => {
+        // Skip animation for infinity symbol
+        if (stat.textContent.includes('∞') || stat.textContent.includes('&infin;')) {
+            return;
+        }
+
         const target = parseInt(stat.textContent);
+
+        // Skip if target is not a valid number
+        if (isNaN(target)) {
+            return;
+        }
+
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
