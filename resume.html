@@ -242,6 +242,14 @@
     </nav>
 
     <div class="resume-container">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button" style="display: inline-flex; align-items: center; gap: 8px; color: var(--accent-color); text-decoration: none; font-size: 16px; margin-bottom: 32px; transition: transform 0.2s ease;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+
         <!-- Header -->
         <div class="resume-header">
             <h1>Matthew Mejia</h1>
@@ -429,5 +437,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Add hover effect to back button
+        const backButton = document.querySelector('.back-button');
+        if (backButton) {
+            backButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-4px)';
+            });
+            backButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        }
+    </script>
 </body>
 </html>

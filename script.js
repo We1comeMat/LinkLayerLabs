@@ -4,14 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectsGrid && typeof projects !== 'undefined') {
         projectsGrid.innerHTML = ''; // Clear existing projects
 
-        projects.forEach(project => {
+        projects.forEach((project, index) => {
             const projectCard = document.createElement('div');
             projectCard.className = 'project-card scroll-reveal';
 
+            // Handle both single image and multiple images
+            let imageHTML = '';
+            if (project.images && Array.isArray(project.images)) {
+                imageHTML = `
+                    <div class="project-image project-image-grid">
+                        ${project.images.map(img => `<img src="${img}" alt="${project.title}">`).join('')}
+                        ${project.model ? `
+                            <button class="view-3d-btn" data-model="${project.model}" data-title="${project.title}">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                                3D View
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            } else if (project.image) {
+                imageHTML = `
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                        ${project.model ? `
+                            <button class="view-3d-btn" data-model="${project.model}" data-title="${project.title}">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                                3D View
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
             projectCard.innerHTML = `
-                <div class="project-image">
-                    <img src="${project.image}" alt="${project.title}">
-                </div>
+                ${imageHTML}
                 <div class="project-content">
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
@@ -26,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-apply hover effects to newly created cards
         applyProjectCardEffects();
+
+        // Add 3D viewer functionality
+        setup3DViewer();
     }
 });
 
@@ -133,8 +170,8 @@ function applyProjectCardEffects() {
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
 
-                const rotateX = (y - centerY) / 25;
-                const rotateY = (centerX - x) / 25;
+                const rotateX = (y - centerY) / 50;
+                const rotateY = (centerX - x) / 50;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
             });

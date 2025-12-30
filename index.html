@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Layer Labs - Matthew Mejia</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -169,6 +177,7 @@
                             <p>Projects Ahead</p>
                         </div>
                     </div>
+                    <a href="resume.html" class="cta-button" style="margin-top: 24px; display: inline-block;">View My Resume</a>
                 </div>
                 <div class="about-image scroll-reveal">
                     <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Electronics workspace">
@@ -288,5 +297,6 @@
 
     <script src="projects.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="3d-viewer.js"></script>
 </body>
 </html>
