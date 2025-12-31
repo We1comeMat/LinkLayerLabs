@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowLink - Link Layer Labs</title>
+    <link rel="icon" type="image/png" href="images/LLL.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-page.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Link Layer Labs</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Projects
+            </a>
+            <h1 class="project-title">GlowLink</h1>
+            <p class="project-subtitle">ESP32-based automotive LED controller for dual WS2811 underglow strips</p>
+            <div class="project-tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">WS2811</span>
+                <span class="tag">ESP-NOW</span>
+                <span class="tag">Automotive</span>
+                <span class="tag">OBD-II</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="container">
+            <h2>Overview</h2>
+            <p>GlowLink is an ESP32-based automotive LED controller designed to manage two WS2811 LED strips for underglow lighting. The system receives vehicle data wirelessly via ESP-NOW from a companion OBD-II bridge module, enabling dynamic LED effects that respond to real-time vehicle data such as speed, RPM, and throttle position.</p>
+
+            <div class="project-media">
+                <div class="pcb-images">
+                    <img src="images/GlowLink_PCB_Front.png" alt="GlowLink PCB Front">
+                    <img src="images/GlowLink_PCB_Back.png" alt="GlowLink PCB Back">
+                </div>
+                <button class="view-3d-btn-inline" data-model="models/GlowLink.glb" data-title="GlowLink">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    View 3D Model
+                </button>
+            </div>
+
+            <div class="project-specs">
+                <div class="spec-item">
+                    <h3>Hardware</h3>
+                    <ul>
+                        <li>ESP32 microcontroller</li>
+                        <li>Dual WS2811 LED strip outputs</li>
+                        <li>12V automotive power input</li>
+                        <li>ESP-NOW wireless receiver</li>
+                    </ul>
+                </div>
+                <div class="spec-item">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Dynamic underglow effects</li>
+                        <li>Wireless vehicle data integration</li>
+                        <li>Left/right independent control</li>
+                        <li>Real-time response to driving conditions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Updates -->
+    <section class="project-updates">
+        <div class="container">
+            <h2>Project Updates</h2>
+            <div class="updates-timeline" id="updates-timeline">
+                <!-- Updates will be loaded from glowlink-updates.js -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="3d-viewer.js"></script>
+    <script type="module" src="glowlink-updates.js"></script>
+</body>
+</html>

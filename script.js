@@ -52,6 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="project-tags">
                         ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
+                    ${project.projectPage ? `
+                        <a href="${project.projectPage}" class="project-link">
+                            <span>View Project</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    ` : ''}
                 </div>
             `;
 
@@ -170,8 +178,8 @@ function applyProjectCardEffects() {
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
 
-                const rotateX = (y - centerY) / 50;
-                const rotateY = (centerX - x) / 50;
+                const rotateX = (y - centerY) / 200;
+                const rotateY = (centerX - x) / 200;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
             });

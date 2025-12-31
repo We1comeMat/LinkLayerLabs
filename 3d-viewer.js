@@ -31,8 +31,8 @@ function setup3DViewer() {
     modalElement = modal;
     canvasContainer = modal.querySelector('.viewer-canvas-container');
 
-    // Add event listeners to all 3D view buttons
-    document.querySelectorAll('.view-3d-btn').forEach(btn => {
+    // Add event listeners to all 3D view buttons (both card and inline)
+    document.querySelectorAll('.view-3d-btn, .view-3d-btn-inline').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const modelPath = btn.dataset.model;
