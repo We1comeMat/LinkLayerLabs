@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 let scene, camera, renderer, controls, model;
 let modalElement, canvasContainer;
 
-function setup3DViewer() {
+export function setup3DViewer() {
     // Create modal HTML
     const modal = document.createElement('div');
     modal.id = 'viewer-modal';

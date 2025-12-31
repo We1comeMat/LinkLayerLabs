@@ -106,7 +106,12 @@
         </div>
     </section>
 
-    <script type="module" src="3d-viewer.js"></script>
+    <script type="module">
+        import { setup3DViewer } from './3d-viewer.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            setup3DViewer();
+        });
+    </script>
     <script type="module" src="glowlink-updates.js"></script>
 </body>
 </html>
