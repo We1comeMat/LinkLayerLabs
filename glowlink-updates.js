@@ -16,6 +16,14 @@ const updates = [
         media: [
             { type: "youtube", videoId: "gXpHu_0eU44", caption: "WS2811 test patterns running on ESP32-S3" }
         ]
+    },
+    {
+        date: "2026-01-01",
+        title: "Logic Level Shifter Issue",
+        description: "Found a level shifting issue with the BSS138 shifter I was using to convert 3.3V to 5V for the LED data line. The shifter uses a pull-up resistor design that can't drive the line all the way to 5V fast enough. On the scope, the output jumps to about 3.1V, rings a bit, then slowly ramps up. On a 900ns pulse it only reaches about 4.1V before the signal drops again, never hitting the expected 5V logic high. I ordered some SN74AHCT125N buffers to test on the breadboard. These should give me an active drive on both high and low states with clean and fast transitions. Planning to verify proper 5V signals before I finalize the PCB design.",
+        media: [
+            { type: "image", src: "images/level_shift_issue.png", caption: "Yellow trace is the 3.3V signal from the MCU, purple is the slow ramping 5V output" }
+        ]
     }
     // Add more updates here as you work on the project
 ];
