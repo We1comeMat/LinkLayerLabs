@@ -106,6 +106,15 @@
         </div>
     </section>
 
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="image-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-img" src="" alt="Enlarged view">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
     <script type="module">
         import { setup3DViewer } from './3d-viewer.js';
         document.addEventListener('DOMContentLoaded', () => {

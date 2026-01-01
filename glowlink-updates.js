@@ -20,9 +20,10 @@ const updates = [
     {
         date: "2026-01-01",
         title: "Logic Level Shifter Issue",
-        description: "Found a level shifting issue with the BSS138 shifter I was using to convert 3.3V to 5V for the LED data line. The shifter uses a pull-up resistor design that can't drive the line all the way to 5V fast enough. On the scope, the output jumps to about 3.1V, rings a bit, then slowly ramps up. On a 900ns pulse it only reaches about 4.1V before the signal drops again, never hitting the expected 5V logic high. I ordered some SN74AHCT125N buffers to test on the breadboard. These should give me an active drive on both high and low states with clean and fast transitions. Planning to verify proper 5V signals before I finalize the PCB design.",
+        description: "Found a level shifting issue with the BSS138 shifter I was using to convert 3.3V to 5V for the LED data line. The shifter uses a pull-up resistor design that can't drive the line all the way to 5V fast enough. On the scope, the output jumps to about 3.1V, then slowly ramps up. On a 900ns pulse it only reaches about 4.1V before the signal drops again, never hitting the expected 5V logic high.\n\nTo see how long it actually takes the pull-up circuit to reach 5V, I ran a test with a longer pulse. It took about 3 microseconds from when the 3.3V signal goes high to when the output finally reaches roughly 5V. This seems too slow for the WS2811's sub-microsecond timing requirements.\n\nI ordered some SN74AHCT125N buffers to test on the breadboard. These should give me an active drive on both high and low states with clean and fast transitions. Planning to verify proper 5V signals before I finalize the PCB design.",
         media: [
-            { type: "image", src: "images/level_shift_issue.png", caption: "Yellow trace is the 3.3V signal from the MCU, purple is the slow ramping 5V output" }
+            { type: "image", src: "images/level_shift_issue.png", caption: "Yellow trace is the 3.3V signal from the MCU, purple is the slow ramping 5V output" },
+            { type: "image", src: "images/level_timing_test.png", caption: "Extended pulse test showing it takes ~3µs for the pull-up circuit to reach 5V" }
         ]
     }
     // Add more updates here as you work on the project
@@ -53,7 +54,7 @@ function renderUpdates() {
             if (item.type === 'image') {
                 return `
                     <div class="update-media-item">
-                        <img src="${item.src}" alt="${item.caption || 'Update image'}">
+                        <img src="${item.src}" alt="${item.caption || 'Update image'}" onclick="openLightbox('${item.src}', '${item.caption || ''}')">
                         ${item.caption ? `<p class="media-caption">${item.caption}</p>` : ''}
                     </div>
                 `;
@@ -97,5 +98,41 @@ function renderUpdates() {
     }).join('');
 }
 
+// Lightbox functionality - make globally accessible
+window.openLightbox = function(src, caption) {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    lightboxImg.src = src;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+window.closeLightbox = function() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', renderUpdates);
+document.addEventListener('DOMContentLoaded', () => {
+    renderUpdates();
+
+    // Close lightbox on background click or Escape key
+    const lightbox = document.getElementById('image-lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                window.closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.closeLightbox();
+            }
+        });
+    }
+});
