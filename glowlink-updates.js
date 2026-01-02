@@ -25,6 +25,14 @@ const updates = [
             { type: "image", src: "images/level_shift_issue.png", caption: "Yellow trace is the 3.3V signal from the MCU, purple is the slow ramping 5V output" },
             { type: "image", src: "images/level_timing_test.png", caption: "Extended pulse test showing it takes ~3µs for the pull-up circuit to reach 5V" }
         ]
+    },
+    {
+        date: "2026-02-02",
+        title: "ESP-NOW Telemetry Testing",
+        description: "While waiting for the AHCT buffer, I decided to try and tackle the task of getting two ESP devices to communicate over the ESP-NOW protocol. I originally decided to use the example sketch in the Arduino IDE as im still getting fimiliar with the ESP IDF in VS Code, which worked great to send the test message built into the code they had provided. I then worked on creating a broadcast of fake car telemetry like RPM, MPH, door and seatbelt status, turn signals, and sent them over to the ESP controlling the led strip. This worked great and I feel more comfortable moving forward knowing it can handle messages like this and control the led strip accordingly.",
+        media: [
+            { type: "youtube", videoId: "o0mNZNFVfCE", caption: "LED strip reacting to dummy car telemetry received over ESP-NOW" }
+        ]
     }
     // Add more updates here as you work on the project
 ];
