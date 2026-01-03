@@ -14,7 +14,7 @@ const updates = [
         title: "LED Strip Testing",
         description: "Received the WS2811 LED strips and successfully tested them with an ESP32-S3 DevKit. Used a logic level shifter to convert the 3.3V data signal to 5V for proper WS2811 control. Running test patterns to verify color accuracy and timing.",
         media: [
-            { type: "youtube", videoId: "gXpHu_0eU44", caption: "WS2811 test patterns running on ESP32-S3" }
+            { type: "youtube", videoId: "gXpHu_0eU44", aspectRatio: "9/16", caption: "WS2811 test patterns running on ESP32-S3" }
         ]
     },
     {
@@ -31,7 +31,7 @@ const updates = [
         title: "ESP-NOW Telemetry Testing",
         description: "While waiting for the AHCT buffer, I decided to try and tackle the task of getting two ESP devices to communicate over the ESP-NOW protocol. I originally decided to use the example sketch in the Arduino IDE as im still getting fimiliar with the ESP IDF in VS Code, which worked great to send the test message built into the code they had provided. I then worked on creating a broadcast of fake car telemetry like RPM, MPH, door and seatbelt status, turn signals, and sent them over to the ESP controlling the led strip. This worked great and I feel more comfortable moving forward knowing it can handle messages like this and control the led strip accordingly.",
         media: [
-            { type: "youtube", videoId: "o0mNZNFVfCE", caption: "LED strip reacting to dummy car telemetry received over ESP-NOW" }
+            { type: "youtube", videoId: "o0mNZNFVfCE", aspectRatio: "16/9", caption: "LED strip reacting to dummy car telemetry received over ESP-NOW" }
         ]
     }
     // Add more updates here as you work on the project
@@ -77,6 +77,7 @@ function renderUpdates() {
                     </div>
                 `;
             } else if (item.type === 'youtube') {
+                const aspectRatio = item.aspectRatio || '16/9'; // Default to horizontal
                 return `
                     <div class="update-media-item">
                         <iframe
@@ -84,7 +85,7 @@ function renderUpdates() {
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
-                            style="width: 100%; aspect-ratio: 9/16; border-radius: 8px;">
+                            style="width: 100%; aspect-ratio: ${aspectRatio}; border-radius: 8px;">
                         </iframe>
                         ${item.caption ? `<p class="media-caption">${item.caption}</p>` : ''}
                     </div>
