@@ -27,11 +27,22 @@ const updates = [
         ]
     },
     {
-        date: "2026-02-02",
+        date: "2026-01-02",
         title: "ESP-NOW Telemetry Testing",
         description: "While waiting for the AHCT buffer, I decided to try and tackle the task of getting two ESP devices to communicate over the ESP-NOW protocol. I originally decided to use the example sketch in the Arduino IDE as im still getting fimiliar with the ESP IDF in VS Code, which worked great to send the test message built into the code they had provided. I then worked on creating a broadcast of fake car telemetry like RPM, MPH, door and seatbelt status, turn signals, and sent them over to the ESP controlling the led strip. This worked great and I feel more comfortable moving forward knowing it can handle messages like this and control the led strip accordingly.",
         media: [
             { type: "youtube", videoId: "o0mNZNFVfCE", aspectRatio: "16/9", caption: "LED strip reacting to dummy car telemetry received over ESP-NOW" }
+        ]
+    },
+    {
+        date: "2026-01-04",
+        title: "AHCT Buffer Testing and Series Resistor Tuning",
+        description: "The SN74AHCT125N buffers arrived and I wired one up on the breadboard to test the 3.3V to 5V level shifting. It worked really well! These CMOS buffers have much cleaner and faster edges compared to the BSS138. I noticed some ringing on the 5V data line when I didn't have any series resistance, so I tried different resistor values to see what would dampen it best. Since I'm out of filtering capacitors right now, there's still some ripple on the 5V line, but the signal looks way better than the old setup. After comparing 0Ω, 68Ω, and 150Ω, I think I'll go with something around 150Ω for the PCB. I can always swap out the chip resistor later if I need to tune it.",
+        media: [
+            { type: "image", src: "images/ahct_levrl_shifter.jpg", caption: "Breadboard circuit with SN74AHCT125N buffer for level shifting" },
+            { type: "image", src: "images/0OHM_5v_reg.png", caption: "0Ω series resistance - clean edges but noticeable ringing on the 5V output" },
+            { type: "image", src: "images/68ohm_5v_reg.png", caption: "68Ω series resistance - reduced ringing compared to 0Ω" },
+            { type: "image", src: "images/150ohn_5v_reg.png", caption: "150Ω series resistance - well damped signal, minimal ringing" }
         ]
     }
     // Add more updates here as you work on the project
