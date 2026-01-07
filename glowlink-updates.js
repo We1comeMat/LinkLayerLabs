@@ -44,6 +44,12 @@ const updates = [
             { type: "image", src: "images/68ohm_5v_reg.png", caption: "68Ω series resistance - reduced ringing compared to 0Ω" },
             { type: "image", src: "images/150ohn_5v_reg.png", caption: "150Ω series resistance - well damped signal, minimal ringing" }
         ]
+    },
+    {
+        date: "2026-01-05",
+        title: "PCB and Components Ordered, Power Concerns",
+        description: "Ordered the bare PCB from JLCPCB and components from Digikey to start building the first prototype. Yesterday I did some research on automotive power quality and found out that car batteries can put out pretty dirty voltage with spikes, noise, and ripple from the alternator. This might cause issues for the ESP32 and LED controller, so I'm looking into building a dedicated power conditioning stage between the battery and the controller board. Might need to add some filtering caps, TVS diodes for spike protection, and maybe a proper buck converter with good output filtering. Still figuring out the best approach before I finalize everything.",
+        media: []
     }
     // Add more updates here as you work on the project
 ];
