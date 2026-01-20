@@ -50,6 +50,24 @@ const updates = [
         title: "PCB and Components Ordered, Power Concerns",
         description: "Ordered the bare PCB from JLCPCB and components from Digikey to start building the first prototype. Yesterday I did some research on automotive power quality and found out that car batteries can put out pretty dirty voltage with spikes, noise, and ripple from the alternator. This might cause issues for the ESP32 and LED controller, so I'm looking into building a dedicated power conditioning stage between the battery and the controller board. Might need to add some filtering caps, TVS diodes for spike protection, and maybe a proper buck converter with good output filtering. Still figuring out the best approach before I finalize everything.",
         media: []
+    },
+    {
+        date: "2026-01-09",
+        title: "PCBs Ordered for Testing",
+        description: "The PCBs and stencil arrived from JLCPCB, so I got to work building up the first board. Applied solder paste with the stencil, placed the components, and reflowed it. Now it's time for some testing to see how everything works together.",
+        media: [
+            { type: "image", src: "images/solder_paste", caption: "First GlowLink PCB with solder paste applied" }
+        ]
+    },
+    {
+        date: "2026-01-10",
+        title: "First Board Built and Working",
+        description: "Finished building the board late last night and got to test it today. Flashing was super easy with the built-in USB support on the ESP32, and it was a relief to know that my routing was not an issue in both the differential pair data lines and the pull downs to ensure 5V delivery through the usb. My bench power supply can't handle the current draw of two LED strips at full brightness, so I'll have to do my testing at limited brightness for now. But I got it programmed and was able to control the left and right LED strips independently, which is exactly what I needed to verify.",
+        media: [
+            { type: "image", src: "images/built_iso.JPEG", caption: "Completed GlowLink board" },
+            { type: "image", src: "images/size_ref.JPEG", caption: "Size reference" },
+            { type: "image", src: "images/test_led_pwr.JPEG", caption: "Testing LED strip power and control" }
+        ]
     }
     // Add more updates here as you work on the project
 ];
