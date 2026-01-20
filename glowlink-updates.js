@@ -3,11 +3,8 @@ const updates = [
     {
         date: "2025-12-28",
         title: "Project Launched",
-        description: "Started development on GlowLink - an ESP32-based automotive LED controller. Initial PCB design completed in KiCad with dual WS2811 outputs and wireless ESP-NOW communication.",
-        media: [
-            { type: "image", src: "images/GlowLink_PCB_Front.png", caption: "PCB Front View" },
-            { type: "image", src: "images/GlowLink_PCB_Back.png", caption: "PCB Back View" }
-        ]
+        description: "Started development on GlowLink, an ESP32-based automotive LED controller for dual WS2811 underglow strips with wireless ESP-NOW communication. Beginning with the breadboard stage using an ESP32-S3 DevKit I had laying around to test the basic functionality before committing to a PCB design.",
+        media: []
     },
     {
         date: "2025-12-30",
@@ -35,6 +32,15 @@ const updates = [
         ]
     },
     {
+        date: "2026-01-03",
+        title: "Started PCB Layout",
+        description: "With the breadboard testing going well, I started laying out the PCB in KiCad. The design includes dual WS2811 outputs for left and right LED strips, the AHCT buffer for level shifting, and the ESP32-C3 Mini for wireless ESP-NOW communication. Trying to keep it compact while still leaving room for the power circuitry.",
+        media: [
+            { type: "image", src: "images/GlowLink_PCB_Front.png", caption: "PCB Front View" },
+            { type: "image", src: "images/GlowLink_PCB_Back.png", caption: "PCB Back View" }
+        ]
+    },
+    {
         date: "2026-01-04",
         title: "AHCT Buffer Testing and Series Resistor Tuning",
         description: "The SN74AHCT125N buffers arrived and I wired one up on the breadboard to test the 3.3V to 5V level shifting. It worked really well! These CMOS buffers have much cleaner and faster edges compared to the BSS138. I noticed some ringing on the 5V data line when I didn't have any series resistance, so I tried different resistor values to see what would dampen it best. Since I'm out of filtering capacitors right now, there's still some ripple on the 5V line, but the signal looks way better than the old setup. After comparing 0Ω, 68Ω, and 150Ω, I think I'll go with something around 150Ω for the PCB. I can always swap out the chip resistor later if I need to tune it.",
@@ -53,8 +59,8 @@ const updates = [
     },
     {
         date: "2026-01-09",
-        title: "PCBs Ordered for Testing",
-        description: "The PCBs and stencil arrived from JLCPCB, so I got to work building up the first board. Applied solder paste with the stencil, placed the components, and reflowed it. Now it's time for some testing to see how everything works together.",
+        title: "PCBs Arrived!",
+        description: "The PCBs, stencil, and components arrived from JLCPCB and Digikey and I got to work building up the first board. Applied solder paste with the stencil, placed the components, and reflowed it with my hot plate. Now it's time for some testing to see how everything works together.",
         media: [
             { type: "image", src: "images/solder_paste", caption: "First GlowLink PCB with solder paste applied" }
         ]
@@ -62,7 +68,7 @@ const updates = [
     {
         date: "2026-01-10",
         title: "First Board Built and Working",
-        description: "Finished building the board late last night and got to test it today. Flashing was super easy with the built-in USB support on the ESP32, and it was a relief to know that my routing was not an issue in both the differential pair data lines and the pull downs to ensure 5V delivery through the usb. My bench power supply can't handle the current draw of two LED strips at full brightness, so I'll have to do my testing at limited brightness for now. But I got it programmed and was able to control the left and right LED strips independently, which is exactly what I needed to verify.",
+        description: "Finished building the board late last night and got to test it today. Flashing was easy with the built-in USB support on the ESP32, and it was a relief to know that my routing was not an issue in both the differential pair data lines and the pull downs to ensure 5V delivery through the usb. My bench power supply can't handle the current draw of two LED strips at full brightness, so I'll have to do my testing at limited brightness for now. But I got it programmed and was able to control the left and right LED strips independently, which is exactly what I needed to be confident continuing with the project.",
         media: [
             { type: "image", src: "images/built_iso.JPEG", caption: "Completed GlowLink board" },
             { type: "image", src: "images/size_ref.JPEG", caption: "Size reference" },
