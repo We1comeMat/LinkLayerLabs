@@ -81,18 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (project.title === 'CANcast') {
                     // OBD-II connector / diagnostic plug icon
                     iconSVG = `
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M4 8h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"></path>
                             <path d="M7 8V6a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2"></path>
-                            <circle cx="6" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="9" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="15" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="18" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="7.5" cy="15" r="1" fill="currentColor"></circle>
-                            <circle cx="10.5" cy="15" r="1" fill="currentColor"></circle>
-                            <circle cx="13.5" cy="15" r="1" fill="currentColor"></circle>
-                            <circle cx="16.5" cy="15" r="1" fill="currentColor"></circle>
+                            <circle cx="6" cy="12" r="0.7" fill="currentColor"></circle>
+                            <circle cx="9" cy="12" r="0.7" fill="currentColor"></circle>
+                            <circle cx="12" cy="12" r="0.7" fill="currentColor"></circle>
+                            <circle cx="15" cy="12" r="0.7" fill="currentColor"></circle>
+                            <circle cx="18" cy="12" r="0.7" fill="currentColor"></circle>
+                            <circle cx="7.5" cy="15" r="0.7" fill="currentColor"></circle>
+                            <circle cx="10.5" cy="15" r="0.7" fill="currentColor"></circle>
+                            <circle cx="13.5" cy="15" r="0.7" fill="currentColor"></circle>
+                            <circle cx="16.5" cy="15" r="0.7" fill="currentColor"></circle>
                         </svg>
                     `;
                 } else {
