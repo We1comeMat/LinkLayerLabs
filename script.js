@@ -2,36 +2,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const projectsGrid = document.querySelector('.projects-grid');
     if (projectsGrid && typeof projects !== 'undefined') {
-        projectsGrid.innerHTML = ''; // Clear existing projects
+        projectsGrid.innerHTML = '';
 
-        projects.forEach((project, index) => {
+        // Find the featured project (GlowLink) and other projects
+        const featuredProject = projects.find(p => p.title === 'GlowLink');
+        const otherProjects = projects.filter(p => p.title !== 'GlowLink');
+
+        // Create featured project card (wide format)
+        if (featuredProject) {
             const projectCard = document.createElement('div');
-            projectCard.className = 'project-card scroll-reveal';
+            projectCard.className = 'project-card featured';
 
-            // Handle both single image and multiple images
             let imageHTML = '';
-            if (project.images && Array.isArray(project.images)) {
+            if (featuredProject.images && Array.isArray(featuredProject.images) && featuredProject.images.length > 0) {
                 imageHTML = `
                     <div class="project-image project-image-grid">
-                        ${project.images.map(img => `<img src="${img}" alt="${project.title}">`).join('')}
-                        ${project.model ? `
-                            <button class="view-3d-btn" data-model="${project.model}" data-title="${project.title}">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                </svg>
-                                3D View
-                            </button>
-                        ` : ''}
-                    </div>
-                `;
-            } else if (project.image) {
-                imageHTML = `
-                    <div class="project-image">
-                        <img src="${project.image}" alt="${project.title}">
-                        ${project.model ? `
-                            <button class="view-3d-btn" data-model="${project.model}" data-title="${project.title}">
+                        ${featuredProject.images.map(img => `<img src="${img}" alt="${featuredProject.title}">`).join('')}
+                        ${featuredProject.model ? `
+                            <button class="view-3d-btn" data-model="${featuredProject.model}" data-title="${featuredProject.title}">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                                     <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
@@ -47,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
             projectCard.innerHTML = `
                 ${imageHTML}
                 <div class="project-content">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
+                    <h3>${featuredProject.title}</h3>
+                    <p>${featuredProject.description}</p>
                     <div class="project-tags">
-                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        ${featuredProject.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
-                    ${project.projectPage ? `
-                        <a href="${project.projectPage}" class="project-link">
+                    ${featuredProject.projectPage ? `
+                        <a href="${featuredProject.projectPage}" class="project-link">
                             <span>View Project</span>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -64,7 +52,80 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             projectsGrid.appendChild(projectCard);
-        });
+        }
+
+        // Create file explorer section for other projects
+        if (otherProjects.length > 0) {
+            const explorerSection = document.createElement('div');
+            explorerSection.className = 'projects-explorer';
+
+            const explorerHeader = document.createElement('div');
+            explorerHeader.className = 'explorer-header';
+            explorerHeader.innerHTML = `
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Other Projects</span>
+            `;
+            explorerSection.appendChild(explorerHeader);
+
+            const explorerList = document.createElement('div');
+            explorerList.className = 'explorer-list';
+
+            otherProjects.forEach(project => {
+                const explorerItem = document.createElement('div');
+                explorerItem.className = 'explorer-item';
+
+                // Use OBD-II plug icon for CANcast, default icon for others
+                let iconSVG = '';
+                if (project.title === 'CANcast') {
+                    // OBD-II connector / diagnostic plug icon
+                    iconSVG = `
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 8h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"></path>
+                            <path d="M7 8V6a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2"></path>
+                            <circle cx="6" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="9" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="15" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="18" cy="12" r="1" fill="currentColor"></circle>
+                            <circle cx="7.5" cy="15" r="1" fill="currentColor"></circle>
+                            <circle cx="10.5" cy="15" r="1" fill="currentColor"></circle>
+                            <circle cx="13.5" cy="15" r="1" fill="currentColor"></circle>
+                            <circle cx="16.5" cy="15" r="1" fill="currentColor"></circle>
+                        </svg>
+                    `;
+                } else {
+                    iconSVG = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    `;
+                }
+
+                explorerItem.innerHTML = `
+                    <div class="explorer-icon">
+                        ${iconSVG}
+                    </div>
+                    <div class="explorer-info">
+                        <span class="explorer-name">${project.title}</span>
+                        <span class="explorer-desc">${project.description}</span>
+                    </div>
+                    <a href="${project.projectPage}" class="explorer-btn">
+                        View Project
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                `;
+                explorerList.appendChild(explorerItem);
+            });
+
+            explorerSection.appendChild(explorerList);
+            projectsGrid.appendChild(explorerSection);
+        }
 
         // Re-apply hover effects to newly created cards
         applyProjectCardEffects();

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANcast - Link Layer Labs</title>
+    <link rel="icon" type="image/png" href="images/LLL.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-page.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Link Layer Labs</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Projects
+            </a>
+            <h1 class="project-title">CANcast</h1>
+            <p class="project-subtitle">OBD-II CAN bus reader that broadcasts vehicle data over ESP-NOW</p>
+            <div class="project-tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">CAN Bus</span>
+                <span class="tag">OBD-II</span>
+                <span class="tag">ESP-NOW</span>
+                <span class="tag">Automotive</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="container">
+            <h2>Overview</h2>
+            <p>CANcast is an OBD-II CAN bus reader designed to plug into your vehicle's diagnostic port and broadcast CAN frames wirelessly over ESP-NOW. It serves as the data source for GlowLink and any other peripherals that could use real-time vehicle data, like a custom HUD, gauges, or other displays. The goal is to have a central broadcaster that multiple devices can listen to without needing their own OBD-II connection.</p>
+
+            <div class="project-specs">
+                <div class="spec-item">
+                    <h3>Hardware</h3>
+                    <ul>
+                        <li>ESP32 microcontroller</li>
+                        <li>CAN bus transceiver</li>
+                        <li>OBD-II connector</li>
+                        <li>ESP-NOW wireless transmitter</li>
+                    </ul>
+                </div>
+                <div class="spec-item">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Reads CAN frames from vehicle</li>
+                        <li>Broadcasts data over ESP-NOW</li>
+                        <li>Supports multiple receivers</li>
+                        <li>Companion device to GlowLink</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Updates -->
+    <section class="project-updates">
+        <div class="container">
+            <h2>Project Updates</h2>
+            <div class="updates-timeline" id="updates-timeline">
+                <!-- Updates will be loaded from cancast-updates.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="image-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-img" src="" alt="Enlarged view">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { setup3DViewer } from './3d-viewer.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            setup3DViewer();
+        });
+    </script>
+    <script type="module" src="cancast-updates.js"></script>
+</body>
+</html>
