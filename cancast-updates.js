@@ -1,12 +1,36 @@
 // CANcast Project Updates
 const updates = [
     {
-        date: "2026-01-19",
+        date: "2026-01-28",
+        title: "Layout Ready for Production",
+        description: "Think I've got the layout pretty much dialed in with all the necessary components for production. The board is only 46 by 32mm so it was a bit of a challenge fitting everything in that small of a footprint, but all the DRC checks are passing so everything checks out until we can test the real thing. Going to double check the OBD-II pinout one more time before I finalize everything and send it off. Planning to order the first prototype soon.",
+        media: [
+            { type: "image", src: "images/CANcast_layout.png", caption: "CANcast PCB layout" }
+        ]
+    },
+    {
+        date: "2026-01-23",
+        title: "Power Muxing Research",
+        description: "Ran into a design challenge with powering the board. CANcast gets power from the car battery through the OBD-II port, but I also want to be able to program and debug it at my desk without the car connected. Started looking into power muxing and found the TPS2116 from TI. It has a priority mode so I can set USB as the secondary source and OBD-II 12V (regulated down) as the primary, and it just switches over automatically. The nice thing is it doesn't use OR-ing diodes so there's no big voltage drop like you'd get with a traditional diode setup. Pretty clean solution.",
+        media: [
+            { type: "image", src: "images/power_Mux_blockdiagram.png", caption: "TPS2116 power mux block diagram" },
+            { type: "image", src: "images/kicad_power_mux.png", caption: "KiCad schematic for power muxing circuit" }
+        ]
+    },
+    {
+        date: "2026-01-18",
+        title: "OBD-II Breadboard Testing",
+        description: "Got an OBD-II cable and connector in and put together a small breadboard setup to start testing things out. Running an ESP32-S3 devkit with the pinout going into the breadboard so I can tap into the power pins and CAN bus lines through a small CAN transceiver. Hooked it up to my truck and was able to figure out where the MS and HS CAN buses are on the connector. Even managed to decode some messages like turn signals and RPM. Good starting point before committing to a PCB layout.",
+        media: [
+            { type: "image", src: "images/obd_breadboard.jpg", caption: "OBD-II breadboard test setup with ESP32-S3 and CAN transceiver" }
+        ]
+    },
+    {
+        date: "2026-01-12",
         title: "Project Started",
         description: "Started development on CANcast, an OBD-II CAN bus reader that will broadcast vehicle data over ESP-NOW. This will be the companion device to GlowLink, providing real-time vehicle telemetry like RPM, speed, turn signals, and other CAN data that peripherals can use.",
         media: []
     }
-    // Add more updates here as you work on the project
 ];
 
 // Render updates to the timeline

@@ -74,8 +74,13 @@ const updates = [
             { type: "image", src: "images/size_ref.JPEG", caption: "Size reference" },
             { type: "image", src: "images/test_led_pwr.JPEG", caption: "Testing LED strip power and control" }
         ]
+    },
+    {
+        date: "2026-01-12",
+        title: "Moving On to CANcast",
+        description: "Got a few more animations dialed in and feeling pretty good about where GlowLink is at. Everything works, effects are looking solid, and I'm ready to move on. Up to this point GlowLink has been running off fake telemetry data, so now it's time to build the thing that actually talks to the truck. Starting work on CANcast, an OBD-II CAN bus reader that plugs in and broadcasts real vehicle data over ESP-NOW. This is the piece that ties it all together.<br><br><a href='cancast.html' class='update-project-link'>Check out the CANcast project page &rarr;</a>",
+        media: []
     }
-    // Add more updates here as you work on the project
 ];
 
 // Render updates to the timeline
