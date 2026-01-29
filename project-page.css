@@ -79,6 +79,22 @@
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     background: #f5f5f7;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.pcb-images img:hover {
+    transform: scale(1.02);
+}
+
+.pcb-images.single-image {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+
+.pcb-images.single-image img {
+    border-radius: 20px;
 }
 
 .view-3d-btn-inline {
