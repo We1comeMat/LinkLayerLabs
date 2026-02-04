@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-apply hover effects to newly created cards
         applyProjectCardEffects();
+        applyCS50CardEffect();
 
         // Add 3D viewer functionality
         setup3DViewer();
@@ -253,6 +254,46 @@ function applyProjectCardEffects() {
             card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
         });
+    });
+}
+
+// CS50 card hover effect (same 3D tilt as project cards)
+function applyCS50CardEffect() {
+    const card = document.querySelector('.cs50-card');
+    if (!card) return;
+
+    let animationFrame;
+
+    card.addEventListener('mouseenter', () => {
+        card.style.transition = 'box-shadow 0.3s ease, transform 0.1s ease-out';
+    });
+
+    card.addEventListener('mousemove', (e) => {
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+
+        animationFrame = requestAnimationFrame(() => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 200;
+            const rotateY = (centerX - x) / 200;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+    });
+
+    card.addEventListener('mouseleave', () => {
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+        card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
 }
 
