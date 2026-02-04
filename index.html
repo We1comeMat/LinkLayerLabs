@@ -161,8 +161,97 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title scroll-reveal">What I'm Working On</h2>
+            <!-- CS50 Progress -->
+            <div class="cs50-card scroll-reveal">
+                <div class="cs50-card-glow"></div>
+                <div class="cs50-card-content">
+                    <div class="cs50-card-top">
+                        <div class="cs50-card-left">
+                            <div class="cs50-title-row">
+                                <h3 class="cs50-card-title">Harvard CS50</h3>
+                                <div class="cs50-badge">IN PROGRESS</div>
+                            </div>
+                            <p class="cs50-card-subtitle">Enrolled in CS50x through EdX to develop my programming and computer science fundamentals as I work toward building more advanced embedded systems and firmware.</p>
+                        </div>
+                        <button class="cs50-log-btn" onclick="document.getElementById('cs50-modal').classList.add('active'); document.body.style.overflow='hidden';">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            Progress Log
+                        </button>
+                    </div>
+                    <div class="cs50-track">
+                        <div class="cs50-fill"></div>
+                        <div class="cs50-marker"></div>
+                        <div class="cs50-flag">🏁</div>
+                    </div>
+                    <div class="cs50-weeks">
+                        <div class="cs50-week completed"><div class="cs50-week-dot"></div><span class="cs50-week-label">W0 Scratch</span></div>
+                        <div class="cs50-week completed"><div class="cs50-week-dot"></div><span class="cs50-week-label">W1 C</span></div>
+                        <div class="cs50-week completed"><div class="cs50-week-dot"></div><span class="cs50-week-label">W2 Arrays</span></div>
+                        <div class="cs50-week current"><div class="cs50-week-dot"></div><span class="cs50-week-label">W3 Algorithms</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W4 Memory</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W5 Data</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W6 Python</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W7 SQL</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W8 Web</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">W9 Flask</span></div>
+                        <div class="cs50-week"><div class="cs50-week-dot"></div><span class="cs50-week-label">Final</span></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="projects-grid">
                 <!-- Projects are loaded from projects.js -->
+            </div>
+
+            <!-- CS50 Progress Log Modal -->
+            <div id="cs50-modal" class="cs50-modal">
+                <div class="cs50-modal-overlay" onclick="document.getElementById('cs50-modal').classList.remove('active'); document.body.style.overflow='';"></div>
+                <div class="cs50-modal-content">
+                    <button class="cs50-modal-close" onclick="document.getElementById('cs50-modal').classList.remove('active'); document.body.style.overflow='';">&times;</button>
+                    <h2 class="cs50-modal-title">CS50 Progress Log</h2>
+                    <div class="cs50-log-list">
+                        <div class="cs50-log-item completed">
+                            <div class="cs50-log-status">&#10003;</div>
+                            <div class="cs50-log-info">
+                                <h4>Week 0 - Scratch</h4>
+                                <p>Been messing around with Scratch since middle school, had projects going back to 2015. Good refresher on computational thinking and visual programming before diving into C.</p>
+                            </div>
+                        </div>
+                        <div class="cs50-log-item completed">
+                            <div class="cs50-log-status">&#10003;</div>
+                            <div class="cs50-log-info">
+                                <h4>Week 1 - C</h4>
+                                <p>Covered basic C syntax, simple inputs and outputs, math operations, and conditionals. First time writing real C code outside of Arduino sketches.</p>
+                            </div>
+                        </div>
+                        <div class="cs50-log-item completed">
+                            <div class="cs50-log-status">&#10003;</div>
+                            <div class="cs50-log-info">
+                                <h4>Week 2 - Arrays</h4>
+                                <p>Dove into arrays with programs like Scrabble where you generate point values based on characters. Learned about strings as arrays of chars and how memory works under the hood.</p>
+                            </div>
+                        </div>
+                        <div class="cs50-log-item current">
+                            <div class="cs50-log-status">&#9679;</div>
+                            <div class="cs50-log-info">
+                                <h4>Week 3 - Algorithms</h4>
+                                <p>Currently working through this one. Learning about search and sort algorithms, Big O notation, and recursion.</p>
+                            </div>
+                        </div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 4 - Memory</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 5 - Data Structures</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 6 - Python</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 7 - SQL</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 8 - Web</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Week 9 - Flask</h4></div></div>
+                        <div class="cs50-log-item"><div class="cs50-log-status">&#9675;</div><div class="cs50-log-info"><h4>Final Project</h4></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -181,6 +270,7 @@
                     <p class="about-description">
                         Currently exploring automotive embedded systems with a focus on wireless communication protocols and LED control systems. My work spans from schematic capture and PCB design through firmware development and real-time system integration.
                     </p>
+
                     <div class="about-stats">
                         <div class="stat">
                             <h3>3+</h3>
